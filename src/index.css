@@ -22,3 +22,12 @@
   --font-rubik: "Rubik";
 }
 
+/* @layer utilities {
+  .container {
+    @apply max-w-[332px]
+  }
+} */
+.background {
+  background-image: url("./assets/images/pattern-background-mobile-dark.svg");
+  background-repeat: no-repeat;
+}
