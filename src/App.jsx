@@ -5,7 +5,7 @@ import ScorePage from "./pages/ScorePage";
 
 function App() {
   return (
-    <div className="background bg-blue-900  text-white font-rubik h-screen p-7">
+    <div className="background bg-blue-900  text-white font-rubik h-screen p-7 flex items-center">
       <Routes>
         <Route path="/" element={<StartPage />} />
         <Route path="/questions" element={<QuestionsPage />} />

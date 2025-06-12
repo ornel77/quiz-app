@@ -22,12 +22,19 @@
   --font-rubik: "Rubik";
 }
 
-/* @layer utilities {
+@layer utilities {
   .container {
-    @apply max-w-[332px]
+    @apply lg:max-w-[1160px] mx-auto 
   }
-} */
+}
 .background {
   background-image: url("./assets/images/pattern-background-mobile-dark.svg");
   background-repeat: no-repeat;
+}
+
+@media (width >= 64rem) {
+  .background {
+    background-image: url("./assets/images/pattern-background-desktop-dark.svg");
+  background-repeat: no-repeat;
+  }
 }
