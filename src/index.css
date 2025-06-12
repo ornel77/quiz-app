@@ -1,6 +1,24 @@
 @import "tailwindcss";
-
+/* @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap'); */
 @theme {
-  --color-chocolate-122: #FF32FF;
+  --color-grey-50: #F4F6FA;
+  --color-grey-500: #626C7F;
+  --color-blue-50: #EBF0FF;
+  --color-blue-100: #EDF1F9;
+  --color-blue-300: #ABC1E1;
+  --color-blue-500: #306AFF;
+  --color-blue-850: #3B4D66;
+  --color-blue-900: #313E51;
+  --color-blue-950: #2D3949;
+  --color-green-100: #E0FDEF;
+  --color-green-500: #2FD887;
+  --color-purple-100: #F6E7FF;
+  --color-purple-600: #A729F5;
+  --color-orange-50: #FFF5ED;
+  --color-orange-400: #FF7E35;
+  --color-red-500: #EE5454;
+
+  --spacing-2300: 184px;
+  --font-rubik: "Rubik";
 }
 
