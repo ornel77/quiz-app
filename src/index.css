@@ -1,5 +1,5 @@
 @import "tailwindcss";
-/* @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap'); */
+
 @theme {
   --color-grey-50: #F4F6FA;
   --color-grey-500: #626C7F;
@@ -35,6 +35,14 @@
 @media (width >= 64rem) {
   .background {
     background-image: url("./assets/images/pattern-background-desktop-dark.svg");
-  background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+@media (width >= 48rem) {
+  .background {
+    background-image: url("./assets/images/pattern-background-tablet-dark.svg");
+    background-repeat: no-repeat;
+    /* background-size: cover; */
   }
 }
