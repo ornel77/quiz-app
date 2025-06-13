@@ -31,6 +31,13 @@
   background-image: url("./assets/images/pattern-background-mobile-dark.svg");
   background-repeat: no-repeat;
 }
+@media (width >= 48rem) {
+  .background {
+    background-image: url("./assets/images/pattern-background-tablet-dark.svg");
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+  }
+}
 
 @media (width >= 64rem) {
   .background {
@@ -39,10 +46,4 @@
     background-size: cover;
   }
 }
-@media (width >= 48rem) {
-  .background {
-    background-image: url("./assets/images/pattern-background-tablet-dark.svg");
-    background-repeat: no-repeat;
-    /* background-size: cover; */
-  }
-}
+
