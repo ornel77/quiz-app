@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import StartPage from "./pages/StartPage";
-import QuestionsPage from "./pages/QuestionsPage";
+import QuizzPage from "./pages/QuizzPage";
 import ScorePage from "./pages/ScorePage";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className="background bg-blue-900  text-white font-rubik h-screen px-7 md:px-0">
       <Routes>
         <Route path="/" element={<StartPage />} />
-        <Route path="/questions" element={<QuestionsPage />} />
+        <Route path="/quizz" element={<QuizzPage />} />
         <Route path="/score" element={<ScorePage />} />
       </Routes>
     </div>

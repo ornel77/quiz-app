@@ -3,9 +3,9 @@ import WelcomeHeader from "../components/Starting/WelcomeHeader";
 
 const StartPage = () => {
   return (
-    <div className="">
+    <div className="h-screen">
       <WelcomeHeader />
-      <div className="md:py-60">
+      <div className="md:py-42">
         <StartContainer />
       </div>
     </div>

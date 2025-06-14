@@ -1,10 +1,39 @@
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import useTopicStore from "../../store/useTopicStore";
 
 const StartContainer = () => {
+  const navigate = useNavigate()
+  const {setTopic} = useTopicStore()
   const links = [
-    {path: "/", img: "/assets/images/icon-html.svg"}
-  ]
+    {
+      title: "HTML",
+      path: "/questions",
+      img: "/assets/images/icon-html.svg",
+      color: "bg-orange-50",
+    },
+    {
+      title: "CSS",
+      path: "/questions",
+      img: "/assets/images/icon-css.svg",
+      color: "bg-green-100 ",
+    },
+    {
+      title: "Javascript",
+      path: "/questions",
+      img: "/assets/images/icon-js.svg",
+      color: "bg-blue-50",
+    },
+    {
+      title: "Accessibility",
+      path: "/questions",
+      img: "/assets/images/icon-accessibility.svg",
+      color: "bg-purple-100",
+    },
+  ];
+
+  const handleTopic = () => {
+    setTopic
+  }
   return (
     <div className="lg:flex lg:justify-between container">
       <section className="welcome mb-10 pt-8 md:pt-0">
@@ -18,50 +47,19 @@ const StartContainer = () => {
         </p>
       </section>
       <section className="themes w-full lg:w-[554px]">
-        <Link
-          to={"/questions"}
-          className="flex items-center p-4 bg-blue-850 rounded-2xl gap-4 mb-4"
-        >
-          <img
-            src="/assets/images/icon-html.svg"
-            alt="html"
-            className="size-10 bg-orange-50 p-1.5 rounded-[8px]"
-          />
-          <p className="text-[18px]">HTML</p>
-        </Link>
-        <Link
-          to={"/questions"}
-          className="flex items-center p-4 bg-blue-850 rounded-2xl gap-4 mb-4"
-        >
-          <img
-            src="/assets/images/icon-css.svg"
-            alt="html"
-            className="size-10 bg-green-100 p-1.5 rounded-[8px]"
-          />
-          <p className="text-[18px]">CSS</p>
-        </Link>
-        <Link
-          to={"/questions"}
-          className="flex items-center p-4 bg-blue-850 rounded-2xl gap-4 mb-4"
-        >
-          <img
-            src="/assets/images/icon-js.svg"
-            alt="html"
-            className="size-10 bg-blue-50 p-1.5 rounded-[8px]"
-          />
-          <p className="text-[18px]">Javascript</p>
-        </Link>
-        <Link
-          to={"/questions"}
-          className="flex items-center p-4 bg-blue-850 rounded-2xl gap-4 mb-4"
-        >
-          <img
-            src="/assets/images/icon-accessibility.svg"
-            alt="html"
-            className="size-10 bg-purple-100 p-1.5 rounded-[8px]"
-          />
-          <p className="text-[18px]">Accessibility</p>
-        </Link>
+        {links.map((link) => (
+          <button
+            className="flex items-center p-4 bg-blue-850 rounded-2xl gap-4 mb-4 w-full cursor-pointer"
+            onClick={() => handleTopic()}
+          >
+            <img
+              src={link.img}
+              alt="html"
+              className={`size-10 p-1.5 ${link.color} rounded-[8px]`}
+            />
+            <p className="text-[18px]">{link.title}</p>
+          </button>
+        ))}
       </section>
     </div>
   );
