@@ -17,21 +17,26 @@ const Header = () => {
     },
     Accessibility: {
       img: "/assets/images/icon-accessibility.svg",
-      color: "bg-purlple-100",
+      color: "bg-purple-100",
     },
   };
 
-  
+
+  const topicStyle = styles[topic] ?? {}
   return (
     <div className="container flex items-center justify-between py-10">
-      <div className="flex items-center  rounded-2xl gap-4">
-        <img
-          src={styles[topic]?.img}
-          alt=""
-          className={`size-10 p-1.5 ${styles[topic]?.color} rounded-[8px]`}
-        />
-        <p className="text-[18px]">{topic}</p>
-      </div>
+      {topic ? (
+        <div className="flex items-center  rounded-2xl gap-4">
+          <img
+            src={topicStyle.img}
+            alt=""
+            className={`size-10 p-1.5 ${topicStyle.color} rounded-[8px]`}
+          />
+          <p className="text-[18px]">{topic}</p>
+        </div>
+      ) : (
+        <div></div>
+      )}
 
       <p>THEME</p>
     </div>
