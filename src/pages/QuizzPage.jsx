@@ -1,10 +1,14 @@
-import QuizzContainer from "../components/Quizz/QuizzContainer"
+import Header from "../components/Common/Header";
+import QuizzContainer from "../components/Quizz/QuizzContainer";
 
 const QuizzPage = () => {
   return (
-    <div>
-      <QuizzContainer />
+    <div className="h-screen">
+      <Header />
+      <div className="md:py-24">
+        <QuizzContainer />
+      </div>
     </div>
-  )
-}
-export default QuizzPage
+  );
+};
+export default QuizzPage;

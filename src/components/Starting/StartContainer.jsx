@@ -1,9 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useTopicStore from "../../store/useTopicStore";
 
 const StartContainer = () => {
-  const navigate = useNavigate()
-  const {setTopic} = useTopicStore()
+  const navigate = useNavigate();
+  const { setTopic } = useTopicStore();
   const links = [
     {
       title: "HTML",
@@ -31,9 +31,11 @@ const StartContainer = () => {
     },
   ];
 
-  const handleTopic = () => {
-    setTopic
-  }
+  const handleTopic = (topic) => {
+    setTopic(topic);
+    navigate(`/quizz/${topic}`);
+  };
+
   return (
     <div className="lg:flex lg:justify-between container">
       <section className="welcome mb-10 pt-8 md:pt-0">
@@ -50,7 +52,8 @@ const StartContainer = () => {
         {links.map((link) => (
           <button
             className="flex items-center p-4 bg-blue-850 rounded-2xl gap-4 mb-4 w-full cursor-pointer"
-            onClick={() => handleTopic()}
+            onClick={() => handleTopic(link.title)}
+            key={link.title}
           >
             <img
               src={link.img}

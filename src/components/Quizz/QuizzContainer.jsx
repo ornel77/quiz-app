@@ -1,11 +1,8 @@
-import useTopicStore from "../../store/useTopicStore"
-
+import useTopicStore from "../../store/useTopicStore";
 
 const QuizzContainer = () => {
-  const {topic} = useTopicStore()
+  const { topic } = useTopicStore();
 
-  return (
-    <div>Topic: {topic} </div>
-  )
-}
-export default QuizzContainer
+  return <div>Topic: {topic} </div>;
+};
+export default QuizzContainer;
