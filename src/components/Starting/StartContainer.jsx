@@ -38,7 +38,7 @@ const StartContainer = () => {
 
   return (
     <div className="lg:flex lg:justify-between container">
-      <section className="welcome mb-10 pt-8 md:pt-0">
+      <section className="welcome mb-10 pt-7 md:pt-0">
         <h1 className="text-[40px] md:text-[64px] md:mb-0.5 lg:leading-15">
           Welcome to the <br />
           <span className="font-bold">Frontend Quiz!</span>

@@ -24,7 +24,7 @@
 
 @layer utilities {
   .container {
-    @apply lg:max-w-[1160px] mx-auto 
+    @apply lg:max-w-[1160px] mx-auto  md:max-w-[700] w-full px-5
   }
 }
 .background {

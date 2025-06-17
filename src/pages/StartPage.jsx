@@ -5,7 +5,7 @@ const StartPage = () => {
   return (
     <div className="h-screen">
       <WelcomeHeader />
-      <div className="md:py-42">
+      <div className="md:py-34">
         <StartContainer />
       </div>
     </div>

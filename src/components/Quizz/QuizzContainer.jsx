@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import useTopicStore from "../../store/useTopicStore";
 import { fetchQuiz } from "../../utils/fetchQuiz";
+import Questions from "./Questions";
+import FormOptions from "./FormOptions";
 
 const QuizzContainer = () => {
   const { topic } = useTopicStore();
@@ -20,11 +22,12 @@ const QuizzContainer = () => {
   }, [topic]);
 
   const questions = quizzes?.questions
-  console.log(questions)
   return (
-    questions?.map(q => (
-      <div className="container">
-        {q.question}
+    questions?.map((q, i) => (
+      <div className="container lg:flex-row lg:justify-between lg:gap-6 flexc">
+        <Questions question = {q} index={i} total={questions.length}/>
+        <FormOptions choices={q.options} answer={q.answer} />
+        <hr />
       </div>
     ))
   )
