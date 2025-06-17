@@ -7,12 +7,13 @@ import FormOptions from "./FormOptions";
 const QuizzContainer = () => {
   const { topic } = useTopicStore();
   const [quizzes, setQuizzes] = useState({});
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
       try {
         const data = await fetchQuiz();
-        const quizForTopic = data.quizzes.find(q => q.title == topic)
+        const quizForTopic = data.quizzes.find((q) => q.title == topic);
         setQuizzes(quizForTopic);
       } catch (error) {
         console.error(error);
@@ -21,15 +22,22 @@ const QuizzContainer = () => {
     getData();
   }, [topic]);
 
-  const questions = quizzes?.questions
+  if (!quizzes.questions) return <p>Chargement...</p>;
+
+  const questions = quizzes.questions;
+  const currentQuestion = questions[currentQuestionIndex];
   return (
-    questions?.map((q, i) => (
-      <div className="container lg:flex-row lg:justify-between lg:gap-6 flexc">
-        <Questions question = {q} index={i} total={questions.length}/>
-        <FormOptions choices={q.options} answer={q.answer} />
-        <hr />
+    currentQuestion && (
+      <div className="container flex lg:flex-row lg:justify-between lg:gap-6">
+        <div className="lg:flex-1">
+          <p className="text-blue-300 italic font-[14px]">
+            Question {currentQuestionIndex + 1} of {questions.length}
+          </p>
+          <p className="font-[120px]">{currentQuestion.question}</p>
+          <div className="bg-blue-850 w-full rounded-full h-[16px]"></div>
+        </div>
       </div>
-    ))
-  )
+    )
+  );
 };
 export default QuizzContainer;
