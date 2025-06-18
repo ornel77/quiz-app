@@ -26,9 +26,12 @@ const QuizzContainer = () => {
 
   const questions = quizzes.questions;
   const currentQuestion = questions[currentQuestionIndex];
+  const progress = ((currentQuestionIndex + 1) * 100) / questions.length;
   const handleSubmit = () => {
     setCurrentQuestionIndex((prev) => prev + 1);
   };
+
+  
   return (
     currentQuestion && (
       <div className="container lg:flex lg:flex-row lg:justify-between lg:gap-32 pt-8">
@@ -40,8 +43,12 @@ const QuizzContainer = () => {
           <p className="text-[20px] md:text-[36px] mb-6 lg:mb-[184px]">
             {currentQuestion.question}
           </p>
-          <div className="bg-blue-850 w-full rounded-full h-[16px] flex items-center p-3 ">
-            <div className="bg-purple-600 h-[10px] rounded-full w-[50px] pl-1.5"></div>
+          {/* Progress Bar */}
+          <div className="bg-blue-850 w-full rounded-full h-[16px] px-1 flex items-center">
+            <div
+              className={`bg-purple-600 h-[10px] rounded-full transition-all duration-300`}
+              style={{ width: `${progress}%` }}
+            ></div>
           </div>
         </div>
 
@@ -63,7 +70,12 @@ const QuizzContainer = () => {
               />
             </div>
           ))}
-          <button onClick={handleSubmit} className="text-center inline-block w-full hover:bg-purple-600t bg-purple-600 md:rounded-3xl rounded-[12px] py-5 lg:py-7 md:text-2xl text-[18px] cursor-pointer lg:transition-colors">Submit Answer</button>
+          <button
+            onClick={handleSubmit}
+            className="text-center inline-block w-full hover:bg-purple-600t bg-purple-600 md:rounded-3xl rounded-[12px] py-5 lg:py-7 md:text-2xl text-[18px] cursor-pointer lg:transition-colors"
+          >
+            Submit Answer
+          </button>
         </div>
       </div>
     )
