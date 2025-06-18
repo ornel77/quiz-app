@@ -24,7 +24,7 @@ const Header = () => {
 
   const topicStyle = styles[topic] ?? {}
   return (
-    <div className="container flex items-center justify-between py-10">
+    <div className="container flex items-center justify-between py-[27px]">
       {topic ? (
         <div className="flex items-center  rounded-2xl gap-4">
           <img
