@@ -8,7 +8,6 @@ const Questions = ({question, index, total}) => {
         {question.question}
       </p>
       <div className="bg-blue-850 w-full rounded-full h-[16px]">
-
       </div>
     </div>
   )

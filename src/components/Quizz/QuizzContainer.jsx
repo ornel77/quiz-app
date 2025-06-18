@@ -31,32 +31,39 @@ const QuizzContainer = () => {
   };
   return (
     currentQuestion && (
-      <div className="container lg:flex lg:flex-row lg:justify-between lg:gap-6 pt-8">
+      <div className="container lg:flex lg:flex-row lg:justify-between lg:gap-32 pt-8">
         {/* Questions */}
         <div className="lg:flex-1 mb-10">
-          <p className="text-blue-300 italic font-[14px] mb-4">
+          <p className="text-blue-300 italic text-[14px] md:text-[20px] mb-4">
             Question {currentQuestionIndex + 1} of {questions.length}
           </p>
-          <p className="text-[20px] mb-6">{currentQuestion.question}</p>
-          <div className="bg-blue-850 w-full rounded-full h-[16px]"></div>
+          <p className="text-[20px] md:text-[36px] mb-6 lg:mb-[184px]">
+            {currentQuestion.question}
+          </p>
+          <div className="bg-blue-850 w-full rounded-full h-[16px] flex items-center p-3 ">
+            <div className="bg-purple-600 h-[10px] rounded-full w-[50px] pl-1.5"></div>
+          </div>
         </div>
 
         {/* Choix multiple */}
         <div className="lg:flex-1 text-[18px]">
-          {currentQuestion.options.map((option) => (
-            <div className="w-full">
+          {currentQuestion?.options?.map((option, i) => (
+            <div
+              className="w-full bg-blue-850 mb-4  rounded-[12px] px-4 py-7 flex "
+              key={i}
+            >
+              <label htmlFor={option} className="block">
+                <span>A</span> {option}
+              </label>
               <input
                 type="radio"
                 name="options"
                 id={option}
                 className="appearance-none"
               />
-              <label htmlFor={option} className="block">
-                <span>A</span> {option}
-              </label>
             </div>
           ))}
-          <button onClick={handleSubmit}>Submit</button>
+          <button onClick={handleSubmit} className="text-center inline-block w-full hover:bg-purple-600t bg-purple-600 md:rounded-3xl rounded-[12px] py-5 lg:py-7 md:text-2xl text-[18px] cursor-pointer lg:transition-colors">Submit Answer</button>
         </div>
       </div>
     )
