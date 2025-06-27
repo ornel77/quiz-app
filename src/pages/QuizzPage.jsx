@@ -3,7 +3,7 @@ import QuizzContainer from "../components/Quizz/QuizzContainer";
 
 const QuizzPage = () => {
   return (
-    <div className="h-screen">
+    <div className="pb-7">
       <Header />
       <div className="md:py-12">
         <QuizzContainer />

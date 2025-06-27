@@ -5,7 +5,7 @@ import ScorePage from "./pages/ScorePage";
 
 function App() {
   return (
-    <div className="background bg-blue-900  text-white font-rubik h-screen px-7 md:px-0 overflow-hidden">
+    <div className="background bg-blue-900  text-white font-rubik min-h-screen px-7 md:px-0">
       <Routes>
         <Route path="/" element={<StartPage />} />
         <Route path="/quizz/:id" element={<QuizzPage />} />

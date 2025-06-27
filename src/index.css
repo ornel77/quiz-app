@@ -48,3 +48,13 @@
   }
 }
 
+.question:hover .letter-question {
+  background-color: #A729F5;
+  color: white;
+}
+
+
+input:checked .letter-question {
+  background-color: #A729F5;
+  color: white;
+}
