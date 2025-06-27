@@ -40,7 +40,7 @@ const QuizzContainer = () => {
           <p className="text-blue-300 italic text-[14px] md:text-[20px] mb-4">
             Question {currentQuestionIndex + 1} of {questions.length}
           </p>
-          <p className="text-[20px] md:text-[36px] mb-6 lg:mb-[184px]">
+          <p className="text-[20px] md:text-[36px] mb-6 lg:mb-[120px]">
             {currentQuestion.question}
           </p>
           {/* Progress Bar */}
@@ -72,7 +72,7 @@ const QuizzContainer = () => {
           ))}
           <button
             onClick={handleSubmit}
-            className="text-center inline-block w-full hover:bg-purple-600t bg-purple-600 md:rounded-3xl rounded-[12px] py-5 lg:py-7 md:text-2xl text-[18px] cursor-pointer lg:transition-colors"
+            className="text-center inline-block w-full hover:bg-purple-600t bg-purple-600 md:rounded-3xl rounded-[12px] py-5 md:text-2xl text-[18px] cursor-pointer lg:transition-colors"
           >
             Submit Answer
           </button>
