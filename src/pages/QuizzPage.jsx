@@ -5,7 +5,7 @@ const QuizzPage = () => {
   return (
     <div className="h-screen">
       <Header />
-      <div className="md:py-24">
+      <div className="md:py-12">
         <QuizzContainer />
       </div>
     </div>

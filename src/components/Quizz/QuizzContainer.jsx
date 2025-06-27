@@ -8,6 +8,9 @@ const QuizzContainer = () => {
   const { topic } = useTopicStore();
   const [quizzes, setQuizzes] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [correct, setCorrect] = useState(0)
+  const [answer, setAnswer] = useState("")
+  const [isCorrect, setIsCorrect] = useState(false)
 
   useEffect(() => {
     const getData = async () => {
@@ -31,7 +34,7 @@ const QuizzContainer = () => {
     setCurrentQuestionIndex((prev) => prev + 1);
   };
 
-  
+
   return (
     currentQuestion && (
       <div className="container lg:flex lg:flex-row lg:justify-between lg:gap-32 pt-8">
