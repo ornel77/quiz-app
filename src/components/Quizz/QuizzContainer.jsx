@@ -3,11 +3,21 @@ import useTopicStore from "../../store/useTopicStore";
 import { fetchQuiz } from "../../utils/fetchQuiz";
 import Questions from "./Questions";
 import FormOptions from "./FormOptions";
+import { useNavigate } from "react-router-dom";
 
 const QuizzContainer = () => {
   const { topic } = useTopicStore();
   const [quizzes, setQuizzes] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+  const navigate = useNavigate();
+
+  const questionNumber = {
+    0: "A",
+    1: "B",
+    2: "C",
+    3: "D",
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -30,7 +40,7 @@ const QuizzContainer = () => {
   const handleSubmit = () => {
     setCurrentQuestionIndex((prev) => prev + 1);
     if (currentQuestionIndex === questions.length - 1) {
-      // navigate("/score");
+      navigate("/score");
     }
   };
 
