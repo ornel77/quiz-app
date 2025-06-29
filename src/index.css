@@ -23,6 +23,23 @@
   --font-rubik: "Rubik";
 }
 
+.question:hover .letter-question {
+  background-color: #A729F5;
+  color: white;
+}
+/* .question:hover {
+  border: #A729F5 2px solid;
+} */
+
+
+input:checked + .question .letter-question {
+  background-color: #A729F5;
+  color: white;
+}
+/* input:checked + .question {
+  border: #A729F5 2px solid;
+} */
+
 @layer utilities {
   .container {
     @apply lg:max-w-[1160px] mx-auto  md:max-w-[700] w-full px-5
@@ -48,13 +65,3 @@
   }
 }
 
-.question:hover .letter-question {
-  background-color: #A729F5;
-  color: white;
-}
-
-
-input:checked .letter-question {
-  background-color: #A729F5;
-  color: white;
-}

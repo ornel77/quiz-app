@@ -9,6 +9,7 @@ const QuizzContainer = () => {
   const { topic } = useTopicStore();
   const [quizzes, setQuizzes] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState("");
 
   const navigate = useNavigate();
 
@@ -37,10 +38,13 @@ const QuizzContainer = () => {
   const questions = quizzes.questions;
   const currentQuestion = questions[currentQuestionIndex];
   const progress = ((currentQuestionIndex + 1) * 100) / questions.length;
-  const handleSubmit = () => {
-    setCurrentQuestionIndex((prev) => prev + 1);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSelectedAnswer("")
     if (currentQuestionIndex === questions.length - 1) {
       navigate("/score");
+    } else {
+      setCurrentQuestionIndex((prev) => prev + 1);
     }
   };
 
@@ -65,31 +69,37 @@ const QuizzContainer = () => {
         </section>
 
         {/* Choix multiple */}
-        <section className="lg:flex-1 text-[18px] flex flex-col">
-          {currentQuestion?.options?.map((option, i) => (
-            <label htmlFor={option} className="flex items-center" key={i}>
-              <input type="radio" name="options" id={option} className="peer" />
-              <div className="question w-full bg-blue-850 mb-6 rounded-[12px] py-4 flex ring-2 ring-transparent peer-hover:ring-purple-600  transition-all">
-                <div className="flex items-center gap-5 px-3">
-                  <span
-                    className="letter-question text-gray-500 text-[28px] bg-grey-50 flex justify-center items-center rounded-xl w-[30px] h-[30px] p-6 peer-hover:bg-purple-600 peer-hover:text-white "
-                  >
+
+        <form className="lg:flex-1 text-[18px] flex flex-col">
+          {currentQuestion?.options?.map((answer, i) => (
+            <label htmlFor={answer} className="flex items-center" key={i}>
+              <input
+                type="radio"
+                name="answers"
+                id={answer}
+                className="peer hidden"
+                value={answer}
+                checked={selectedAnswer === answer}
+                onChange={(e) => setSelectedAnswer(e.target.value)}
+              />
+              <div className="question w-full bg-blue-850 mb-6 rounded-[12px] py-4 flex ring-2 ring-transparent peer-checked:ring-purple-600 peer-hover:ring-purple-600 items-center gap-5 px-3">
+                {/* <div className="flex items-center gap-5 px-3"> */}
+                  <span className="letter-question text-gray-500 text-[28px] bg-grey-50 flex justify-center items-center rounded-xl w-[30px] h-[30px] p-6 ">
                     {" "}
                     {questionNumber[i]}{" "}
                   </span>{" "}
-                  <span className="text-[18px]">{option}</span>
-                </div>
+                  <span className="text-[18px]">{answer}</span>
+                {/* </div> */}
               </div>
             </label>
           ))}
           <button
-            type="submit"
             onClick={handleSubmit}
             className="text-center inline-block w-full hover:bg-purple-600t bg-purple-600 md:rounded-3xl rounded-[12px] py-5 md:text-2xl text-[18px] cursor-pointer lg:transition-colors"
           >
             Submit Answer
           </button>
-        </section>
+        </form>
       </div>
     )
   );
