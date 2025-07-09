@@ -9,7 +9,9 @@ const QuizzContainer = () => {
   const { topic } = useTopicStore();
   const [quizzes, setQuizzes] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
+  const [isCorrect, setIsCorrect] = useState();
+  const [score, setScore] = useState(0);
 
   const navigate = useNavigate();
 
@@ -40,12 +42,23 @@ const QuizzContainer = () => {
   const progress = ((currentQuestionIndex + 1) * 100) / questions.length;
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSelectedAnswer("")
-    if (currentQuestionIndex === questions.length - 1) {
-      navigate("/score");
-    } else {
-      setCurrentQuestionIndex((prev) => prev + 1);
-    }
+    const isAnswerCorrect = selectedOption === currentQuestion.answer;
+    setIsCorrect(isAnswerCorrect);
+    setTimeout(() => {
+      if (isAnswerCorrect) {
+        setScore((prev) => prev + 1);
+        console.log(isCorrect)
+      }
+      setSelectedOption("");
+
+      if (currentQuestionIndex === questions.length - 1) {
+        navigate("/score");
+      } else {
+        setCurrentQuestionIndex((prev) => prev + 1);
+      }
+
+      setIsCorrect(null);
+    }, 2000);
   };
 
   return (
@@ -71,25 +84,40 @@ const QuizzContainer = () => {
         {/* Choix multiple */}
 
         <form className="lg:flex-1 text-[18px] flex flex-col">
-          {currentQuestion?.options?.map((answer, i) => (
-            <label htmlFor={answer} className="flex items-center" key={i}>
+          {currentQuestion?.options?.map((option, i) => (
+            <label htmlFor={option} className="flex items-center" key={i}>
               <input
                 type="radio"
-                name="answers"
-                id={answer}
+                name="options"
+                id={option}
                 className="peer hidden"
-                value={answer}
-                checked={selectedAnswer === answer}
-                onChange={(e) => setSelectedAnswer(e.target.value)}
+                value={option}
+                checked={selectedOption === option}
+                onChange={(e) => setSelectedOption(e.target.value)}
               />
-              <div className="question w-full bg-blue-850 mb-6 rounded-[12px] py-4 flex ring-2 ring-transparent peer-checked:ring-purple-600 peer-hover:ring-purple-600 items-center gap-5 px-3">
-                {/* <div className="flex items-center gap-5 px-3"> */}
+              <div className="question w-full bg-blue-850 mb-6 rounded-[12px] py-4 flex ring-2 ring-transparent peer-checked:ring-purple-600 peer-hover:ring-purple-600 items-center justify-between px-3">
+                <div className="flex items-center gap-5">
                   <span className="letter-question text-gray-500 text-[28px] bg-grey-50 flex justify-center items-center rounded-xl w-[30px] h-[30px] p-6 ">
                     {" "}
                     {questionNumber[i]}{" "}
                   </span>{" "}
-                  <span className="text-[18px]">{answer}</span>
-                {/* </div> */}
+                  <span className="text-[18px]">{option}</span>
+                </div>
+                <div className="flex flex-shrink-0 w-10 h-10 items-center justify-center ">
+                  {isCorrect ? (
+                    <img
+                      src="/assets/images/icon-correct.svg"
+                      alt=""
+                      className="w-8 h-8"
+                    />
+                  ) : (
+                    <img
+                      src="/assets/images/icon-incorrect.svg"
+                      alt=""
+                      className="w-8 h-8"
+                    />
+                  )}
+                </div>
               </div>
             </label>
           ))}
