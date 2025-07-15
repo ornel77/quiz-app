@@ -36,6 +36,22 @@ input:checked + .question .letter-question {
   background-color: #A729F5;
   color: white;
 }
+
+.green-color {
+  background-color: var(--color-green-500);
+  color: white
+}
+
+.green-border {
+  border: var(--color-green-500) 2px solid;
+}
+.red-border {
+  border: var(--color-red-500) 2px solid;
+}
+.red-color {
+  background-color: var(--color-red-500);
+  color: white
+}
 /* input:checked + .question {
   border: #A729F5 2px solid;
 } */
