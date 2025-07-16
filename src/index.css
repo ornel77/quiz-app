@@ -63,6 +63,10 @@ input:checked + .question .letter-question {
   border: #A729F5 2px solid;
 } */
 
+.btn-form {
+  background-color: gray;
+}
+
 @layer utilities {
   .container {
     @apply lg:max-w-[1160px] mx-auto  md:max-w-[700] w-full px-5

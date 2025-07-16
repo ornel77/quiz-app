@@ -12,7 +12,6 @@ const QuizzContainer = () => {
   const [quizzes, setQuizzes] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
-  const [isCorrect, setIsCorrect] = useState();
   const [isSubmit, setIsSubmit] = useState();
 
   const navigate = useNavigate();
@@ -45,7 +44,6 @@ const QuizzContainer = () => {
     e.preventDefault();
     setIsSubmit(true);
     const isAnswerCorrect = selectedOption === currentQuestion.answer;
-    setIsCorrect(isAnswerCorrect);
     setTimeout(() => {
       if (isAnswerCorrect) {
         incrementScore()
@@ -58,7 +56,6 @@ const QuizzContainer = () => {
         setCurrentQuestionIndex((prev) => prev + 1);
       }
 
-      setIsCorrect(null);
       setIsSubmit(false);
     }, 2000);
   };

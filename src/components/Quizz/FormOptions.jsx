@@ -63,7 +63,10 @@ const FormOptions = ({
       })}
       <button
         onClick={handleSubmit}
-        className="text-center inline-block w-full hover:bg-purple-600t bg-purple-600 md:rounded-3xl rounded-[12px] py-5 md:text-2xl text-[18px] cursor-pointer lg:transition-colors"
+        className={`text-center inline-block w-full hover:bg-purple-600t bg-purple-600 md:rounded-3xl rounded-[12px] py-5 md:text-2xl text-[18px] cursor-pointer lg:transition-colors
+          ${isSubmit && "btn-form"}
+          `}
+        disabled={isSubmit}
       >
         Submit Answer
       </button>
