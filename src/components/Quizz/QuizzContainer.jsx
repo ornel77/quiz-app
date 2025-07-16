@@ -13,6 +13,7 @@ const QuizzContainer = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
   const [isSubmit, setIsSubmit] = useState();
+  const [isChoiceSelected, setIsChoiceSelected] = useState(false)
 
   const navigate = useNavigate();
 
@@ -43,6 +44,9 @@ const QuizzContainer = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmit(true);
+    if(selectedOption === "") {
+      setIsChoiceSelected(true)
+    }
     const isAnswerCorrect = selectedOption === currentQuestion.answer;
     setTimeout(() => {
       if (isAnswerCorrect) {
@@ -79,6 +83,7 @@ const QuizzContainer = () => {
           handleSubmit={handleSubmit}
           selectedOption={selectedOption}
           isSubmit={isSubmit}
+          isChoiceSelected={isChoiceSelected}
         />
       </div>
     )

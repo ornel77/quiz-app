@@ -5,6 +5,7 @@ const FormOptions = ({
   handleSubmit,
   selectedOption,
   isSubmit,
+  isChoiceSelected,
 }) => {
   return (
     <form className="lg:flex-1 text-[18px] flex flex-col">
@@ -70,6 +71,7 @@ const FormOptions = ({
       >
         Submit Answer
       </button>
+      {isChoiceSelected && <p>Choose</p>}
     </form>
   );
 };

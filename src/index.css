@@ -27,10 +27,6 @@
   background-color: #A729F5;
   color: white;
 }
-/* .question:hover {
-  border: #A729F5 2px solid;
-} */
-
 
 input:checked + .question .letter-question {
   background-color: #A729F5;
@@ -48,8 +44,6 @@ input:checked + .question .letter-question {
   color: white;
 }
 
-
-
 .green-border {
   box-shadow: none;
   border: var(--color-green-500) 2px solid;
@@ -59,12 +53,10 @@ input:checked + .question .letter-question {
   border: var(--color-red-500) 2px solid;
 }
 
-/* input:checked + .question {
-  border: #A729F5 2px solid;
-} */
 
 .btn-form {
   background-color: gray;
+  cursor: not-allowed;
 }
 
 @layer utilities {
