@@ -8,12 +8,12 @@ import useScoreStore from "../../store/useScoreStore";
 
 const QuizzContainer = () => {
   const { topic } = useTopicStore();
-  const {incrementScore, score} = useScoreStore()
+  const { incrementScore } = useScoreStore();
   const [quizzes, setQuizzes] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
   const [isSubmit, setIsSubmit] = useState();
-  const [isChoiceSelected, setIsChoiceSelected] = useState(false)
+  const [isChoiceSelected, setIsChoiceSelected] = useState(false);
 
   const navigate = useNavigate();
 
@@ -44,24 +44,27 @@ const QuizzContainer = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmit(true);
-    if(selectedOption === "") {
-      setIsChoiceSelected(true)
+    if (selectedOption === "") {
+      setIsSubmit(false)
+      setIsChoiceSelected(true);
+    } else {
+      const isAnswerCorrect = selectedOption === currentQuestion.answer;
+      setIsChoiceSelected(null)
+      setTimeout(() => {
+        if (isAnswerCorrect) {
+          incrementScore();
+        }
+        setSelectedOption("");
+
+        if (currentQuestionIndex === questions.length - 1) {
+          navigate("/score");
+        } else {
+          setCurrentQuestionIndex((prev) => prev + 1);
+        }
+
+        setIsSubmit(false);
+      }, 2000);
     }
-    const isAnswerCorrect = selectedOption === currentQuestion.answer;
-    setTimeout(() => {
-      if (isAnswerCorrect) {
-        incrementScore()
-      }
-      setSelectedOption("");
-
-      if (currentQuestionIndex === questions.length - 1) {
-        navigate("/score");
-      } else {
-        setCurrentQuestionIndex((prev) => prev + 1);
-      }
-
-      setIsSubmit(false);
-    }, 2000);
   };
 
   return (

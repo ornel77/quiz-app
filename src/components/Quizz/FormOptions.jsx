@@ -71,7 +71,10 @@ const FormOptions = ({
       >
         Submit Answer
       </button>
-      {isChoiceSelected && <p>Choose</p>}
+      {isChoiceSelected && (<div className="flex items-center justify-center mt-4 gap-1.5">
+        <img src="/assets/images/icon-error.svg" alt="" />
+        <p>Please select an answer</p>
+        </div>)}
     </form>
   );
 };
