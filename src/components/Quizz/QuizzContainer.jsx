@@ -4,15 +4,16 @@ import { fetchQuiz } from "../../utils/fetchQuiz";
 import Questions from "./Questions";
 import FormOptions from "./FormOptions";
 import { useNavigate } from "react-router-dom";
+import useScoreStore from "../../store/useScoreStore";
 
 const QuizzContainer = () => {
   const { topic } = useTopicStore();
+  const {incrementScore, score} = useScoreStore()
   const [quizzes, setQuizzes] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
   const [isCorrect, setIsCorrect] = useState();
   const [isSubmit, setIsSubmit] = useState();
-  const [score, setScore] = useState(0);
 
   const navigate = useNavigate();
 
@@ -47,9 +48,7 @@ const QuizzContainer = () => {
     setIsCorrect(isAnswerCorrect);
     setTimeout(() => {
       if (isAnswerCorrect) {
-        setScore((prev) => prev + 1);
-        console.log(isCorrect);
-        console.log(score);
+        incrementScore()
       }
       setSelectedOption("");
 
