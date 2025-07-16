@@ -102,7 +102,7 @@ const QuizzContainer = () => {
                   onChange={(e) => setSelectedOption(e.target.value)}
                 />
                 <div
-                  className={`question w-full bg-blue-850 mb-6 rounded-[12px] py-4 flex ring-2 ring-transparent  items-center justify-between px-3 
+                  className={`question w-full bg-blue-850 mb-6 rounded-[12px] py-4 flex ring-2 ring-transparent  items-center justify-between px-3 peer-hover:ring-purple-600 
                     ${isSelected && 'peer-checked:ring-purple-600'}
                     ${isSubmit && isRightAnswer && "green-border"}
                     ${isSubmit && !isRightAnswer && isSelected ? "red-border" : ""}
@@ -110,8 +110,8 @@ const QuizzContainer = () => {
                 >
                   <div className="flex items-center gap-5">
                     <span className={`letter-question text-gray-500 text-[28px] bg-grey-50 flex justify-center items-center rounded-xl w-[30px] h-[30px] p-6 
-                    ${isSubmit && isRightAnswer ? "green-color" : ""}
-                    ${isSubmit && !isRightAnswer && isSelected ? "red-color" : ""}
+                    ${isSubmit && isRightAnswer && "green-color"}
+                    ${isSubmit && !isRightAnswer && isSelected && "red-color"}
 
                       `}>
                       {" "}
