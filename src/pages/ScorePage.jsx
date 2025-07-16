@@ -5,7 +5,7 @@ const ScorePage = () => {
   return (
     <div className="h-screen">
       <Header />
-      <div className="md:py-42">
+      <div className="md:py-12">
         <ScoreContainer />
       </div>
     </div>
